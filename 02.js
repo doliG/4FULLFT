@@ -1,17 +1,17 @@
 // Transformez ci-dessous les fonctions en fonctions fléchées.
-// Bonus: réutilisez les ternaires.
-// Quelle différence entre une fonction fléchée et une fonction classique ?
+// 💡 https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Functions/Arrow_functions
 
-const helloKebab = ()=>  'Hello, Kebab !'
+function helloKebab() {
+    return 'Hello, Kebab !'
+}
 
-const glutenOrNotGluten = withGluten =>  {
+function glutenOrNotGluten(withGluten) {
     if (withGluten) {
         return 'gluten'
     } else {
         return 'sans-gluten'
     }
 }
-
 
 function makeKebab(kebab, withGluten) {
     if (withGluten) {
@@ -20,5 +20,8 @@ function makeKebab(kebab, withGluten) {
         return kebab + 'sans-gluten'
     }
 }
+
+// Quelle différence entre une fonction fléchée et une fonction classique ?
+// Bonus: réutilisez les ternaires.
 
 module.exports = { helloKebab, glutenOrNotGluten, makeKebab }
