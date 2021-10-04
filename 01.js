@@ -1,5 +1,5 @@
 // Vous pouvez vérifier que votre code fonctionne en le lançant manuellement,
-// ou avec la commande `yarn test` ou `npm run test`.
+// ou avec la commande `yarn test [--watch]` ou `npm run test [--watch]`.
 
 // Certains clients veulent un kebab sans gluten. D'autres avec.
 // La fonction ci-dessous doit retourner 'sans-gluten' ou 'avec-gluten' en fonction
@@ -14,7 +14,7 @@ function glutenOrNotGluten(withGluten) {
  * @param {boolean} withGluten boolean
  */
 function makeKebab(kebab, withGluten) {
-    
+
 }
 
 module.exports = { glutenOrNotGluten, makeKebab }
