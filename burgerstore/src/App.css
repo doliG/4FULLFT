@@ -1,10 +1,22 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Birthstone&display=swap"); */
+
+.App {
+  background-color: #ffcc80;
+}
+
 nav {
-  max-width: 668px;
-  margin: 1rem auto 0 auto;
-  padding: 8px;
+  margin: 0 auto;
   text-align: center;
-  border: 1px solid black;
-  border-radius: 8px;
+  background-color: #ffcc80;
+  font-family: "Birthstone", cursive;
+  font-size: 3rem;
+  background-color: #ffcc80;
+}
+
+nav > img {
+  height: 100px;
+  display: block;
+  margin: 0 auto;
 }
 
 .container {
