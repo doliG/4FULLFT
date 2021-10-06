@@ -2,11 +2,11 @@
 // ou avec la commande `yarn test [--watch]` ou `npm run test [--watch]`.
 
 // Certains clients veulent un kebab sans gluten. D'autres avec.
-// La fonction ci-dessous doit retourner 'sans-gluten' ou 'avec-gluten' en fonction
+// La fonction ci-dessous doit retourner 'gluten' ou 'avec-gluten' en fonction
 // du choix du client.
 // 💡 https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
 function glutenOrNotGluten(withGluten) {
-
+    return withGluten ? 'gluten' : 'sans-gluten'
 }
 
 // Dans la fonction, kebab est une chaine de caractère représentant un kebab
@@ -16,7 +16,7 @@ function glutenOrNotGluten(withGluten) {
 //     makeKebab('galette salade ', false)
 //     > 'galette oignons sans-gluten'
 function makeKebab(kebab, withGluten) {
-
+    return kebab + (withGluten ? 'gluten' : 'sans-gluten')
 }
 
 module.exports = { glutenOrNotGluten, makeKebab }
