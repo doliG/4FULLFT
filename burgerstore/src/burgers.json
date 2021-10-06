@@ -1,0 +1,42 @@
+[
+    {
+      "name": "Kawaii burger",
+      "price": 990,
+      "image": "https://res.cloudinary.com/teepublic/image/private/s--QGmjn0Qd--/t_Preview/b_rgb:fefeff,c_limit,f_jpg,h_630,q_90,w_630/v1501533190/production/designs/1779865_1.jpg",
+      "vegetarian": false
+    },
+    {
+      "name": "L'instagrammable",
+      "price": 1990,
+      "image":
+        "https://i.pinimg.com/736x/16/47/b9/1647b9b8ae1b2f20b681dbf69466088b.jpg",
+      "vegetarian": false
+    },
+    {
+      "name": "Le Kimchi burger",
+      "price": 1290,
+      "image":
+        "https://i.pinimg.com/originals/25/3f/8f/253f8fc62b47b828ecc33518f609edc7.jpg",
+      "vegetarian": false
+    },
+    {
+      "name": "L'infinissable",
+      "price": 1500,
+      "image":
+        "https://external-preview.redd.it/ToN5KYGzPKSqLfk7-B1iqmxcYdL1VnhMzXI2U2Rk6LA.jpg?width=796&auto=webp&s=bbb200974373b5feb4e69ae7937f780703857518",
+      "vegetarian": false
+    },
+    {
+      "name": "Le Burg'ignon",
+      "price": 1290,
+      "image":
+        "https://media.kaufland.com/images/PPIM/AP_Content_2708/std.lang.all/82/24/Asset_2268224.jpg",
+      "vegetarian": false
+    },
+    {
+      "name": "Le Falafel burger",
+      "price": 790,
+      "image": "https://www.wearesovegan.com/wp-content/uploads/2020/07/veganfalafelburgerrecipe-t1.jpg",
+      "vegetarian": true
+    }
+  ]
