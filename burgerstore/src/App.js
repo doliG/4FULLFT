@@ -18,6 +18,7 @@ import React from "react"
  *
  * https://fr.reactjs.org/docs/handling-events.html
  * https://fr.reactjs.org/docs/lifting-state-up.html
+ * https://fr.reactjs.org/docs/faq-functions.html#how-do-i-bind-a-function-to-a-component-instance
  */
 
 class App extends React.Component {
@@ -25,6 +26,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       burgers: [],
+      checkout: [],
     }
   }
 
@@ -32,6 +34,18 @@ class App extends React.Component {
     fetch("https://run.mocky.io/v3/dcb6a144-7e4f-4c30-b570-6433ee331291")
       .then(res => res.json())
       .then(res => this.setState({ burgers: res }))
+  }
+
+  addToCart = burger => {
+    if (this.state.checkout.find(el => el.burger.name === burger.name)) {
+      const checkout = this.state.checkout.map(el => {
+        el.burger.name === burger.name ? { ...el, qt: el.qt + 1 } : el
+      })
+      this.setState({ checkout })
+    } else {
+      const checkout = [...this.state.checkout, { burger, qt: 1 }]
+      this.setState({ checkout })
+    }
   }
 
   render() {
@@ -48,7 +62,11 @@ class App extends React.Component {
         <div className="container">
           {/* TODO: Use shortcut props for burger */}
           {this.state.burgers.map(burger => (
-            <Burger key={burger.name} burger={burger} />
+            <Burger
+              key={burger.name}
+              burger={burger}
+              addToCart={this.addToCart}
+            />
           ))}
         </div>
       </div>
