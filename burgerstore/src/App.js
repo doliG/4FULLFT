@@ -1,27 +1,39 @@
 import "./App.css"
 import Burger from "./Burger"
-import burgers from "./burgers.json"
 import React from "react"
 
 /**
- * Maintenant qu'on peut afficher la liste de nos burgers, on aimerait les
- * récupérer depuis une api.
+ * Ça marche ? Wow. Bon, c'est bien beau d'afficher une liste de burger, mais
+ * c'est mieux de pouvoir les commander, non ?
  *
- * Pour cela, on va utiliser les classes de React. Pour commencer, on va
- * convertir notre fonction App() en une classe.
- * Puis nous allons utiliser l'un des cycles de vies pour faire notre appel API
- * ou le simuler un appel avec setTimeout.
- * Enfin nous allons mettre les résultats obtenus dans le state.
+ * - Ajoutez un bouton "Commander" en dessous de chaque burger
+ * - Au clic sur le bouton "Commander", on veut sauvegarder le burger dans
+ * le panier. Pour cela on va ajouter une nouvelle propriété dans le state de
+ * App.js: checkout.
+ * this.state = { burgers: [], checkout: [] }
+ * Checkout contiendra un tableau et chaque élément sera un objet comportant
+ * deux props: checkout: [
+ *   { burger: {}, quantity: 1 },
+ * ]
  *
- * Prenez le temps de bien lire la documentation.
- * 💡 https://fr.reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class
- * 💡 https://fr.reactjs.org/docs/state-and-lifecycle.html#adding-local-state-to-a-class
- * 💡 https://run.mocky.io/v3/dcb6a144-7e4f-4c30-b570-6433ee331291
- *
- * En bonus: ajouter un petit loader en attendant les données.
- * 💡 https://lottiefiles.com/search?q=burger&category=animations
+ * https://fr.reactjs.org/docs/handling-events.html
+ * https://fr.reactjs.org/docs/lifting-state-up.html
  */
+
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      burgers: [],
+    }
+  }
+
+  componentDidMount() {
+    fetch("https://run.mocky.io/v3/dcb6a144-7e4f-4c30-b570-6433ee331291")
+      .then(res => res.json())
+      .then(res => this.setState({ burgers: res }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -35,7 +47,7 @@ class App extends React.Component {
         </nav>
         <div className="container">
           {/* TODO: Use shortcut props for burger */}
-          {burgers.map(burger => (
+          {this.state.burgers.map(burger => (
             <Burger key={burger.name} burger={burger} />
           ))}
         </div>
