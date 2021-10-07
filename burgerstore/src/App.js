@@ -1,6 +1,7 @@
 import "./App.css"
 import Burger from "./Burger"
 import burgers from "./burgers.json"
+import React from "react"
 
 /**
  * Maintenant qu'on peut afficher la liste de nos burgers, on aimerait les
@@ -20,25 +21,27 @@ import burgers from "./burgers.json"
  * En bonus: ajouter un petit loader en attendant les données.
  * 💡 https://lottiefiles.com/search?q=burger&category=animations
  */
-function App() {
-  return (
-    <div className="App">
-      <nav>
-        <img
-          height="100px"
-          src="https://cdn.dribbble.com/users/1787323/screenshots/9382093/media/db80fee4b04ff0cdcc3d51dee78a5275.png"
-          alt="Logo le bon burger"
-        />
-        Le bon burger
-      </nav>
-      <div className="container">
-        {/* TODO: Use shortcut props for burger */}
-        {burgers.map(burger => (
-          <Burger key={burger.name} burger={burger} />
-        ))}
+class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        <nav>
+          <img
+            height="100px"
+            src="https://cdn.dribbble.com/users/1787323/screenshots/9382093/media/db80fee4b04ff0cdcc3d51dee78a5275.png"
+            alt="Logo le bon burger"
+          />
+          Le bon burger
+        </nav>
+        <div className="container">
+          {/* TODO: Use shortcut props for burger */}
+          {burgers.map(burger => (
+            <Burger key={burger.name} burger={burger} />
+          ))}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default App
