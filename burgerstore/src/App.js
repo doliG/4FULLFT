@@ -25,6 +25,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       burgers: [],
+      checkout: [],
     }
   }
 
@@ -32,6 +33,24 @@ class App extends React.Component {
     fetch("https://run.mocky.io/v3/dcb6a144-7e4f-4c30-b570-6433ee331291")
       .then(res => res.json())
       .then(res => this.setState({ burgers: res }))
+  }
+
+  addToCart = burger => () => {
+    const { checkout } = this.state
+
+    if (checkout.find(el => el.burger.name === burger.name)) {
+      // Si le burger est deja dans le panier, on augmente la quantité
+      const updatedCheckout = checkout.map(el =>
+        el.burger.name === burger.name
+          ? { ...el, quantity: el.quantity + 1 }
+          : el
+      )
+      this.setState({ checkout: updatedCheckout })
+    } else {
+      // Sinon, on ajoute le burger avec une quantité de 1
+      const updatedCheckout = [...this.state.checkout, { burger, quantity: 1 }]
+      this.setState({ checkout: updatedCheckout })
+    }
   }
 
   render() {
@@ -46,9 +65,12 @@ class App extends React.Component {
           Le bon burger
         </nav>
         <div className="container">
-          {/* TODO: Use shortcut props for burger */}
           {this.state.burgers.map(burger => (
-            <Burger key={burger.name} burger={burger} />
+            <Burger
+              key={burger.name}
+              burger={burger}
+              addToCart={this.addToCart(burger)}
+            />
           ))}
         </div>
       </div>
