@@ -10,6 +10,7 @@ const Burger = ({ burger }) => {
       <img src={image} alt={name} />
       <p>{name}</p>
       <p>{formattedPrice}</p>
+      <button>J'ai faim !</button>
     </div>
   )
 }
