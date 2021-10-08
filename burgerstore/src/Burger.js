@@ -10,7 +10,7 @@ const Burger = ({ burger, addToCart }) => {
       <img src={image} alt={name} />
       <p>{name}</p>
       <p>{formattedPrice}</p>
-      <button onClick={addToCart}>J'ai faim !</button>
+      <button onClick={() => addToCart(burger)}>J'ai faim !</button>
     </div>
   )
 }

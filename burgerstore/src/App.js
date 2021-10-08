@@ -1,6 +1,6 @@
 import "./App.css"
 import Burger from "./Burger"
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 /**
  * Ok, maintenant il est temps de passer aux Hooks.
@@ -19,24 +19,17 @@ import React from "react"
  *  -> https://maxrozen.com/fetching-data-react-with-useeffect
  */
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      burgers: [],
-      checkout: [],
-    }
-  }
+function App() {
+  const [burgers, setBurgers] = useState([])
+  const [checkout, setCheckout] = useState([])
 
-  componentDidMount() {
+  useEffect(() => {
     fetch("https://run.mocky.io/v3/dcb6a144-7e4f-4c30-b570-6433ee331291")
       .then(res => res.json())
-      .then(res => this.setState({ burgers: res }))
-  }
+      .then(res => setBurgers(res))
+  }, [])
 
-  addToCart = burger => () => {
-    const { checkout } = this.state
-
+  const addToCart = burger => {
     if (checkout.find(el => el.burger.name === burger.name)) {
       // Si le burger est deja dans le panier, on augmente la quantité
       const updatedCheckout = checkout.map(el =>
@@ -44,47 +37,31 @@ class App extends React.Component {
           ? { ...el, quantity: el.quantity + 1 }
           : el
       )
-      this.setState({ checkout: updatedCheckout })
+      setCheckout(updatedCheckout)
     } else {
       // Sinon, on ajoute le burger avec une quantité de 1
-      const updatedCheckout = [...this.state.checkout, { burger, quantity: 1 }]
-      this.setState({ checkout: updatedCheckout })
+      const updatedCheckout = [...checkout, { burger, quantity: 1 }]
+      setCheckout(updatedCheckout)
     }
   }
 
-  render() {
-    return (
-      <div className="App">
-        <nav>
-          <img
-            height="100px"
-            src="https://cdn.dribbble.com/users/1787323/screenshots/9382093/media/db80fee4b04ff0cdcc3d51dee78a5275.png"
-            alt="Logo le bon burger"
-          />
-          Le bon burger
-        </nav>
-        <div className="container">
-          {this.state.burgers.map(burger => (
-            <Burger
-              key={burger.name}
-              burger={burger}
-              addToCart={this.addToCart(burger)}
-            />
-          ))}
-        </div>
-        {this.state.checkout.length && (
-          <div className="checkout">
-            <b>Votre panier</b>
-            {this.state.checkout.map(el => (
-              <p>
-                {el.burger.name} x{el.quantity}
-              </p>
-            ))}
-          </div>
-        )}
+  return (
+    <div className="App">
+      <nav>
+        <img
+          height="100px"
+          src="https://cdn.dribbble.com/users/1787323/screenshots/9382093/media/db80fee4b04ff0cdcc3d51dee78a5275.png"
+          alt="Logo le bon burger"
+        />
+        Le bon burger
+      </nav>
+      <div className="container">
+        {burgers.map(burger => (
+          <Burger key={burger.name} burger={burger} addToCart={addToCart} />
+        ))}
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App

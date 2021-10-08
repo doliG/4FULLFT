@@ -25,17 +25,3 @@ nav > img {
   display: flex;
   flex-wrap: wrap;
 }
-
-.checkout {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  padding: 1rem;
-  border: 1px solid black;
-  border-radius: 8px;
-  background: white;
-}
-
-.checkout > p {
-  line-height: 1;
-}
