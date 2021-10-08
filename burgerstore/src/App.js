@@ -72,6 +72,16 @@ class App extends React.Component {
             />
           ))}
         </div>
+        {this.state.checkout.length && (
+          <div className="checkout">
+            <b>Votre panier</b>
+            {this.state.checkout.map(el => (
+              <p>
+                {el.burger.name} x{el.quantity}
+              </p>
+            ))}
+          </div>
+        )}
       </div>
     )
   }
