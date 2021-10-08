@@ -1,6 +1,7 @@
 import "./App.css"
 import Burger from "./Burger"
 import React, { useEffect, useState } from "react"
+import Checkout from "./Checkout"
 
 /**
  * Ok, maintenant il est temps de passer aux Hooks.
@@ -60,6 +61,7 @@ function App() {
           <Burger key={burger.name} burger={burger} addToCart={addToCart} />
         ))}
       </div>
+      <Checkout checkout={checkout} />
     </div>
   )
 }
